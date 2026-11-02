@@ -1,4 +1,4 @@
-# afterglow (web)
+# amine ps4 
 
 Kernel exploit for the PlayStation 4 on firmware **14.00**, run from the
 console's own browser. It leaves the kernel readable and writable, `uid 0`,
