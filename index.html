@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="landing" lang="en" manifest="offline.appcache">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AMINE PS4</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Every run starts from here. The referrer guard in jb.js arms the chain
+         only when it was reached from this page, so that a browser restoring
+         its last session cannot re-run it unattended. -->
+    <div id="brand"><b>AMINE <span>PS4</span></b></div>
+
+    <div class="shell">
+      <img class="meme" src="meme.png" alt="" />
+
+      <main class="panel">
+        <p class="lede">PLAYSTATION 4 &middot; FIRMWARE 14.00</p>
+
+        <form class="pick" id="pick">
+          <label class="opt">
+            <input type="radio" name="payload" value="hen" />
+            <span>ps4-hen</span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="payload" value="goldhen" checked />
+            <span>GoldHEN</span>
+          </label>
+
+          <label class="opt opt-auto">
+            <input type="checkbox" id="auto" checked />
+            <span>autostart</span>
+          </label>
+
+          <button class="btn" type="submit">start</button>
+          <p class="count" id="count"></p>
+          <p id="cacheStatus" class="cache-status">OFFLINE CACHE: CHECKING…</p>
+          <div class="cache-track" aria-label="Offline cache download progress">
+            <div id="cacheProgress" class="cache-progress"></div>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <p class="byline">by well0nez/m0zz</p>
+    <script src="cache-status.js"></script>
+    <script src="launch.js"></script>
+  </body>
+</html>

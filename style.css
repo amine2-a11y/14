@@ -1,0 +1,104 @@
+/* AMINE PS4 — refined dark console theme. Presentation only; launch logic untouched. */
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --panel: rgba(15, 29, 48, .94);
+  --panel2: #10243a;
+  --line: rgba(119, 173, 220, .24);
+  --fg: #dce9f7;
+  --bright: #f5f9ff;
+  --dim: #8fa8c2;
+  --faint: #607b98;
+  --ok: #55e0b0;
+  --bad: #ff7d89;
+  --warn: #ffd27a;
+  --accent: #48b9ff;
+  --sans: "Segoe UI", Arial, system-ui, sans-serif;
+  --mono: Consolas, "DejaVu Sans Mono", monospace;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; min-height: 100%;
+  background: radial-gradient(ellipse at 50% 34%, #16385a 0%, #0b1b30 43%, var(--bg) 82%);
+  color: var(--fg); font: 16px/1.5 var(--sans);
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .22;
+  background-image: linear-gradient(rgba(110,170,220,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(110,170,220,.055) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+#brand {
+  position: relative; padding: 19px 24px; text-align: center;
+  border-bottom: 1px solid var(--line); background: rgba(5, 14, 26, .76);
+  box-shadow: 0 8px 30px rgba(0,0,0,.18); backdrop-filter: blur(12px);
+}
+#brand b { color: var(--bright); font-size: 20px; font-weight: 800; letter-spacing: .19em; }
+#brand b span { color: var(--accent); }
+.byline { position: fixed; bottom: 14px; left: 18px; z-index: 9; margin: 0; color: #6685a4; font: 11px/1 var(--mono); letter-spacing: .08em; }
+.shell {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: clamp(28px, 5vw, 76px);
+  min-height: calc(100vh - 66px); padding: 54px 28px 72px;
+}
+/* Keep the supplied artwork, but present it as a restrained brand mark. */
+.meme { width: min(270px, 30vw); max-width: 38vw; height: auto; filter: drop-shadow(0 22px 35px rgba(0,0,0,.42)); }
+.panel {
+  width: min(430px, 92vw); padding: clamp(26px, 3.5vw, 42px);
+  border: 1px solid rgba(112, 177, 230, .28); border-radius: 22px;
+  background: linear-gradient(145deg, rgba(19, 41, 65, .96), rgba(8, 22, 39, .97));
+  box-shadow: 0 24px 70px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.055);
+}
+.lede { margin: 0 0 27px; color: #9bb8d4; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-align: center; }
+.pick { margin: 0; }
+.opt {
+  display: flex; align-items: center; gap: 12px; margin: 0 0 12px; padding: 17px 18px;
+  border: 1px solid var(--line); border-radius: 12px; background: rgba(7, 19, 34, .66);
+  color: var(--fg); font-size: 17px; font-weight: 650; cursor: pointer;
+  transition: border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.opt:hover { border-color: rgba(72,185,255,.75); background: rgba(21,55,84,.82); transform: translateY(-1px); }
+.opt input { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); }
+.opt span { vertical-align: middle; }
+.opt-auto { margin-top: 20px; padding: 13px 16px; border-style: dashed; background: rgba(8,20,34,.35); color: var(--dim); font-size: 14px; font-weight: 550; }
+.btn {
+  display: block; width: 100%; margin-top: 22px; padding: 17px 22px;
+  border: 1px solid rgba(112,220,255,.62); border-radius: 12px;
+  background: linear-gradient(105deg, #087fc1, #16a7d5 55%, #24bfae);
+  color: #fff; font: 800 16px/1 var(--sans); letter-spacing: .15em;
+  text-transform: uppercase; cursor: pointer; box-shadow: 0 10px 28px rgba(0,145,205,.24);
+  transition: filter .16s ease, transform .16s ease;
+}
+.btn:hover, .btn:focus { filter: brightness(1.13); transform: translateY(-1px); outline: 2px solid rgba(91,201,255,.25); outline-offset: 3px; }
+.count { margin: 15px 0 0; min-height: 1.3em; color: var(--ok); font: 12px/1.3 var(--mono); letter-spacing: .05em; text-align: center; }
+#spin { position: fixed; top: calc(50% + 20px); left: 50%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border: 4px solid rgba(120,170,210,.2); border-top-color: var(--accent); border-right-color: var(--ok); border-radius: 50%; animation: spin .85s linear infinite; box-shadow: 0 0 28px rgba(72,185,255,.12); }
+@keyframes spin { to { transform: rotate(360deg); } }
+#msg { position: fixed; top: 50%; left: 0; right: 0; transform: translateY(-50%); display: none; text-align: center; font-size: 19px; font-weight: 700; letter-spacing: .08em; }
+#wrap { padding: 0; }
+#state, #out { display: none; }
+body.done #spin, body.fail #spin { display: none; }
+body.fail #msg, body.done #msg { display: block; }
+body.fail #msg { color: var(--bad); }
+body.done #msg { color: var(--ok); font-weight: 800; letter-spacing: .12em; }
+body.log { display: flex; flex-direction: column; height: 100vh; background: #07111f; }
+body.log #spin, body.log #msg { display: none; }
+body.log #wrap { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+@media (max-width: 700px) {
+  #brand { padding: 15px 18px; }
+  #brand b { font-size: 17px; }
+  .shell { gap: 18px; min-height: calc(100vh - 54px); padding: 28px 16px 58px; }
+  .meme { width: 150px; max-width: 42vw; }
+  .panel { padding: 23px 20px; border-radius: 17px; }
+  .opt { padding: 14px; font-size: 15px; }
+  .btn { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+.cache-status{margin:12px 0 0;text-align:center;color:#ffd27a;font:700 11px/1.4 Consolas,monospace;letter-spacing:.08em}.cache-status.ready{color:#55e0b0}.cache-status.error{color:#ff7d89}
+
+/* Offline cache progress indicator */
+.cache-track{width:100%;height:9px;margin:10px 0 4px;overflow:hidden;border:1px solid #29466f;border-radius:99px;background:#081225}
+.cache-progress{width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,#278bd7,#55d6ff);transition:width .18s ease}
+.cache-status{min-height:1.4em}
+.cache-status.ready{color:#55d6ff}
+.cache-status.error{color:#ff718e}
