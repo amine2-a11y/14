@@ -7,8 +7,8 @@
   "use strict";
 
   var TARGET = {
-    hen: "log=1&afterglow=run&payload=hen.bin",
-    goldhen: "log=1&afterglow=run&mode=goldhen"
+    hen: "afterglow=run&payload=hen.bin",
+    goldhen: "afterglow=run&mode=goldhen"
   };
   var STORE_KEY = "amine.ps4.choice";
   var AUTO_DELAY = 5;
