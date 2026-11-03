@@ -1,4 +1,4 @@
-# afterglow (web)
+# Amine PS4 (web)
 
 Kernel exploit for the PlayStation 4 on firmware **14.00**, run from the
 console's own browser. It leaves the kernel readable and writable, `uid 0`,
@@ -18,7 +18,7 @@ Nothing is installed on the console. The pages are static files.
 ## Running it
 
 ```sh
-./serve.sh                      # port 8000, or AFTERGLOW_PORT=8080 ./serve.sh
+./serve.sh                      # port 8000, or AMINE_PORT=8080 ./serve.sh
 ```
 
 Open `http://<host>:8000/` in the console's browser, pick **ps4-hen** or

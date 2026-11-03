@@ -17,6 +17,6 @@ class Handler(SimpleHTTPRequestHandler):
         super().end_headers()
 
 if __name__ == '__main__':
-    port=int(os.environ.get('AFTERGLOW_PORT','8000'))
+    port=int(os.environ.get('AMINE_PORT','8000'))
     print(f'AMINE PS4 local server: http://0.0.0.0:{port}/  (Ctrl+C to stop)')
     ThreadingHTTPServer(('0.0.0.0',port),Handler).serve_forever()

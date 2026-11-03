@@ -2,7 +2,7 @@
 # Serve this folder to the console.
 #
 #   ./serve.sh                     # port 8000
-#   AFTERGLOW_PORT=8080 ./serve.sh
+#   AMINE_PORT=8080 ./serve.sh
 #
 # Two things this has to get right, and a plain `python3 -m http.server`
 # gets one of them wrong:
@@ -23,7 +23,7 @@
 set -eu
 
 cd "$(dirname "$0")"
-PORT="${AFTERGLOW_PORT:-8000}"
+PORT="${AMINE_PORT:-8000}"
 
 exec python3 - "$PORT" <<'PY'
 import sys
@@ -57,7 +57,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 port = int(sys.argv[1])
 server = ThreadingHTTPServer(("0.0.0.0", port), partial(Handler, directory="."))
-print("afterglow on http://0.0.0.0:%d/  (ctrl-c to stop)" % port, flush=True)
+print("Amine PS4 on http://0.0.0.0:%d/  (ctrl-c to stop)" % port, flush=True)
 try:
     server.serve_forever()
 except KeyboardInterrupt:
