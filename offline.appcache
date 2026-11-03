@@ -1,9 +1,10 @@
 CACHE MANIFEST
-# AMINE PS4 14.00 — offline cache revision 4
+# AMINE PS4 14.00 OFFLINE PACKAGE - revision 6
 
 CACHE:
 index.html
 jb.html
+offline.html
 style.css
 launch.js
 cache-status.js
@@ -18,5 +19,5 @@ hen.bin
 goldhen.bin
 patchset.bin
 
-NETWORK:
-*
+FALLBACK:
+/ offline.html
